@@ -1,20 +1,20 @@
-const apiKey = "64c18eb04cb146ae86355bbe1f64d883"; 
+const apiKey = "64c18eb04cb146ae86355bbe1f64d883";
 
 let juegosGuardados = JSON.parse(localStorage.getItem("favoritos")) || []; // Cargar favoritos
 
 function buscarJuego() {
     let nombre = document.getElementById("gameName").value;
-    let url = `https://api.rawg.io/api/games?key=${apiKey}&search=${nombre}&page_size=30`;
+    let url = `https://api.rawg.io/api/games?key=${apiKey}&search=${nombre}&page_size=150`;
 
     fetch(url)
         .then(response => response.json())
         .then(data => {
             let juegos = data.results;
-            let html = ""; 
+            let html = "";
 
             juegos.forEach(juego => {
                 let agregado = juegosGuardados.some(j => j.id === juego.id);
-                
+
                 html += `
                     <div class="tarjeta">
                         <img src="${juego.background_image}" alt="${juego.name}">
@@ -67,28 +67,28 @@ function agregarJuegoManual() {
     juegosGuardados.push(nuevoJuego);
     localStorage.setItem("favoritos", JSON.stringify(juegosGuardados));
 
-    mostrarJuegosGuardados(); // Actualizar la lista
+    mostrarJuegosGuardados();
 }
 
 function eliminarJuego(index) {
     juegosGuardados.splice(index, 1);
     localStorage.setItem("favoritos", JSON.stringify(juegosGuardados));
 
-    mostrarJuegosGuardados(); // Recargar la lista
+    mostrarJuegosGuardados();
 }
 
-// Mostrar juegos guardados al cargar la página
+
 mostrarJuegosGuardados();
 
 function guardarJuego(id, nombre, imagen) {
     let index = juegosGuardados.findIndex(j => j.id === id);
-    
+
     if (index === -1) {
         juegosGuardados.push({ id, nombre, imagen });
     } else {
-        juegosGuardados.splice(index, 1); // Eliminar si ya está agregado
+        juegosGuardados.splice(index, 1);
     }
 
-    localStorage.setItem("favoritos", JSON.stringify(juegosGuardados)); // Guardar en LocalStorage
-    buscarJuego(); // Recargar la lista
+    localStorage.setItem("favoritos", JSON.stringify(juegosGuardados));
+    buscarJuego();
 }
