@@ -1,10 +1,52 @@
+/* Estilos generales */
 body {
     font-family: Arial, sans-serif;
     text-align: center;
     background-color: #1e1e1e;
     color: white;
+    margin: 0;
+    padding: 0;
 }
 
-#gameInfo {
-    margin-top: 20px;
+/* Contenedor de juegos en Grid */
+.resultados {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Columnas flexibles */
+    gap: 15px;
+    padding: 20px;
+    justify-content: center;
 }
+
+/* Estilos de cada tarjeta */
+.tarjeta {
+    background-color: #2c2c2c;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    transition: transform 0.2s ease-in-out;
+}
+
+.tarjeta:hover {
+    transform: scale(1.05); /* Efecto hover */
+}
+
+/* Imágenes estandarizadas */
+.tarjeta img {
+    width: 100%; /* Ocupará el 100% del contenedor */
+    height: 150px; /* Altura fija para todas las imágenes */
+    object-fit: cover; /* Recorta para que todas se vean bien */
+    border-radius: 5px;
+}
+
+/* Ajustes para los títulos */
+.tarjeta h2 {
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+.tarjeta p {
+    font-size: 14px;
+    margin: 5px 0;
+}
+

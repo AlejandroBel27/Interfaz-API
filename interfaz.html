@@ -3,14 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Busca tu videoJuego</title>
+    <title>Buscador de Videojuegos</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Buscar Videojuegos</h1>
-    <input type="text" id="gameName" placeholder="Ingresa un videojuego">
-    <button onclick="buscarJuego()">Buscar</button>
-    <div id="gameInfo"></div>
+    <header>
+        <h1>🎮 Buscador de Videojuegos</h1>
+    </header>
+
+    <main>
+        <section class="agregar-juego">
+            <h2>Agregar Juego Manualmente</h2>
+            <input type="text" id="nombreJuego" placeholder="Nombre del juego">
+            <input type="url" id="imagenJuego" placeholder="URL de la imagen">
+            <button onclick="agregarJuegoManual()">➕ Agregar</button>
+        </section>
+        
+        <section id="favoritos" class="resultados">
+            <h2>Juegos Guardados</h2>
+            
+        </section>
+        <section class="buscador">
+            <input type="text" id="gameName" placeholder="Escribe el nombre del juego">
+            <button onclick="buscarJuego()">🔍 Buscar</button>
+        </section>
+
+        <section id="gameInfo" class="resultados">
+            
+        </section>
+
+    </main>
 
     <script src="script.js"></script>
 </body>
